@@ -25,6 +25,8 @@
 const imag = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 const items = document.querySelector('.items');
 let currentItem = 0;
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
 for (let i = 0; i < imag.length; i++) {
   const item = document.createElement('div');
@@ -41,3 +43,25 @@ for (let i = 0; i < imag.length; i++) {
   item.append(img);
   items.append(item);
 }
+
+const listItem = document.querySelectorAll('.item');
+
+prev.addEventListener('click', function () {
+  console.log('clicco su foto precedente');
+
+  if (currentItem > 0) {
+    listItem[currentItem].classList.remove('active');
+    currentItem--;
+    listItem[currentItem].classList.add('active');
+  }
+});
+
+next.addEventListener('click', function () {
+  console.log('clicco su foto successiva');
+
+  if (currentItem < listItem.length - 1) {
+    listItem[currentItem].classList.remove('active');
+    currentItem++;
+    listItem[currentItem].classList.add('active');
+  }
+});
